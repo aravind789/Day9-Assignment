@@ -4,12 +4,10 @@ wage_per_hour=20
 is_part_time=1
 is_full_time=0
 work_hours=0
-if [ $random -eq 0 ]
-then
-	work_hours=8
-elif [$random -eq 1 ]
-then
-	work_hours=4
-fi
-dailyWage=$(($wage_per_hour*$is_full_time))
-
+case $random in
+	$is_part_time)  work_hours=4;;
+	$is_full_time)  work_hours=8;;
+	*)		work_hours=0;;
+esac
+dailyWage=$(($wage_per_hour*$work_hours))
+echo "DailyWage" $dailyWage
