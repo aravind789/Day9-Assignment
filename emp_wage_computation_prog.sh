@@ -8,16 +8,18 @@ max_hours_in_month=100
 total_working_days=0
 total_working_hours=0
 n=0
+function getWorkingHours(){
+        case $1 in
+        $is_part_time)  work_hours=4;;
+        $is_full_time)  work_hours=8;;
+        *)              work_hours=0;;
+esac
+echo $work_hours
 while [ $total_working_hours -lt $max_hours_in_month ] && [  $total_working_days -lt $Working_days_per_month ]
 do
 	((total_working_days))
-	random=$(($RANDOM%2))
-	case $random in
-	$is_part_time)  work_hours=4;;
-	$is_full_time)  work_hours=8;;
-	*)		work_hours=0;;
-esac
-n=$((n+1))
-dailyWage=$(($wage_per_hour*$work_hours))
-echo "DailyWage is :" $dailyWage
+	work_hours="$( getWorkingHours $((RANDOM%2)) )"
+	total_working_hours=$(($total_working_hours + $work_wours ))
+	dailyWage=$(($wage_per_hour*$work_hours))
+	echo "DailyWage is :" $dailyWage
 done
