@@ -22,6 +22,6 @@ do
 	total_working_hours=$(($total_working_hours + $work_wours ))
 	dailyWage=$(($wage_per_hour*$work_hours))
 	total_wage=$(($dailyWage+$total_wage))
-	echo "DailyWage is :" $dailyWage
+	echo "DailyWage on $total_working_days :" $dailyWage
 	echo "Total wage is :" $total_wage
 done
